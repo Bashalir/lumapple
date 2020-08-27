@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AuthProvider from './providers/AuthProvider';
+
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {GlobalStyle} from './themes';
+import AppRouter from './router/index';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+function App() {
+  return (
+    <>
+      <GlobalStyle />
+      <AuthProvider>
+        <AppRouter />
+      </AuthProvider>
+    </>
+  );
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(<App />, document.getElementById('app'));
